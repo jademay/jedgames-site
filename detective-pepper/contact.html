@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Detective Pepper</title>
+  <meta name="description" content="Contact the creator of Detective Pepper — cosy logic-grid puzzles starring a tiny tuxedo cat detective." />
+
+  <link rel="icon" type="image/png" href="../assets/DP_favicon.png">
+
+  <style>
+    :root{
+      --bg:#0f1220;
+      --card:#161a2e;
+      --text:#eef0ff;
+      --muted:#b9bfdc;
+      --accent:#7cf0c5;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+
+    .wrap{max-width:820px;margin:0 auto;padding:28px}
+
+    .home-link{
+      display:inline-block;
+      margin-bottom:20px;
+      font-size:14px;
+      color:var(--muted);
+      text-decoration:none;
+    }
+    .home-link:hover{text-decoration:underline}
+
+    .card{
+      background:rgba(22,26,46,.85);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    h1{
+      margin-top:0;
+      font-size:32px;
+      letter-spacing:-.4px;
+    }
+
+    p{color:var(--muted);line-height:1.6}
+
+    .email{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .email:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    footer{
+      margin-top:30px;
+      font-size:13px;
+      color:var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <a href="index.html" class="home-link">← Back to Detective Pepper</a>
+
+    <div class="card">
+      <h1>Contact</h1>
+
+      <p>
+        Have feedback, found a bug, or want to suggest a puzzle idea?
+        I’d love to hear from you.
+      </p>
+
+      <p>
+        You can get in touch via email:
+      </p>
+
+      <a class="email" href="mailto:detectivepeppergame@gmail.com">
+        🐾 detectivepeppergame@gmail.com
+      </a>
+
+      <p style="margin-top:18px">
+        Please note: Detective Pepper is an independent project, so replies may not be instant —
+        but all messages are read.
+      </p>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Detective Pepper
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
