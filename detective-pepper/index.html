@@ -2,97 +2,339 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Detective Pepper — JED Games</title>
-  <meta name="description" content="Detective Pepper — cosy logic-grid mysteries starring a black-and-white detective cat." />
-  <link rel="stylesheet" href="../styles.css" />
-</head>
-<body>
-  <div class="container">
-    <header class="nav">
-      <div class="brand">
-        <div class="brand-badge">JG</div>
-        <div>JED Games</div>
-      </div>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Detective Pepper is a cosy logic-grid puzzle game starring a tiny tuxedo cat detective. Solve bite-sized mysteries, tick off clues, and make your final accusation." />
+  <title>Detective Pepper — Cosy Logic Puzzles</title>
 
-      <nav class="nav-links">
-        <a href="../">Home</a>
-        <a class="active" href="./">Detective Pepper</a>
+  <style>
+    :root{
+      --bg:#0f1220;
+      --card:#161a2e;
+      --text:#eef0ff;
+      --muted:#b9bfdc;
+      --accent:#7cf0c5;
+      --accent2:#8aa7ff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(124,240,197,.15), transparent 55%),
+        radial-gradient(900px 500px at 90% 20%, rgba(138,167,255,.14), transparent 55%),
+        radial-gradient(800px 600px at 50% 100%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:12px 0 6px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(124,240,197,.35), rgba(138,167,255,.30));
+      border:1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      display:grid;place-items:center;
+      font-weight:800;
+    }
+    .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+    .brand span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{
+      text-decoration:none;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      padding:10px 12px;border-radius:999px;
+      color:var(--text);
+      font-size:14px;
+    }
+    .pill:hover{background:rgba(255,255,255,.07)}
+    .cta{
+      background:linear-gradient(135deg, rgba(124,240,197,.25), rgba(138,167,255,.18));
+      border:1px solid rgba(124,240,197,.35);
+    }
+
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:22px;
+      padding:22px 0 10px;
+      align-items:center;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr;gap:14px}
+      nav{justify-content:flex-start}
+    }
+    .card{
+      background:rgba(22,26,46,.82);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .hero .left{padding:26px}
+    .kicker{
+      display:inline-flex;gap:8px;align-items:center;
+      font-size:13px;color:var(--muted);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      padding:8px 12px;border-radius:999px;
+      margin-bottom:12px;
+    }
+    .kicker b{color:var(--text)}
+    .title{
+      font-size:42px;line-height:1.08;margin:10px 0 12px;
+      letter-spacing:-.6px;
+    }
+    .subtitle{color:var(--muted);font-size:16px;margin:0 0 18px}
+    .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:12px;
+      text-decoration:none;font-weight:650;font-size:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border:1px solid rgba(124,240,197,.40);
+      background:linear-gradient(135deg, rgba(124,240,197,.30), rgba(138,167,255,.20));
+    }
+    .hint{margin-top:10px;color:var(--muted);font-size:13px}
+
+    .hero .right{
+      padding:18px;
+      display:grid;gap:12px;
+    }
+    .shot{
+      aspect-ratio: 16 / 10;
+      border-radius:16px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      display:grid;place-items:center;
+      color:var(--muted);
+      position:relative;
+    }
+    .shot img{
+      width:100%;height:100%;object-fit:cover;display:block;
+    }
+    .shot .label{
+      position:absolute;left:12px;bottom:12px;
+      font-size:12px;color:rgba(238,240,255,.92);
+      background:rgba(0,0,0,.35);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(6px);
+    }
+
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+      margin:18px 0 10px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+    }
+    .feature{padding:16px}
+    .feature h3{margin:0 0 6px;font-size:16px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .icon{
+      width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      margin-bottom:10px;
+      font-size:18px;
+    }
+
+    section{padding:22px 0}
+    .sectionTitle{font-size:22px;margin:0 0 10px}
+    .sectionText{color:var(--muted);margin:0 0 14px}
+
+    .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width: 860px){ .twoCol{grid-template-columns:1fr} }
+
+    .list{
+      margin:0;padding-left:18px;color:var(--muted);
+    }
+    .list li{margin:6px 0}
+
+    footer{
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--border);
+      margin-top:18px;
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+    }
+    .links{display:flex;gap:12px;flex-wrap:wrap}
+    .links a{color:var(--muted);text-decoration:none}
+    .links a:hover{color:var(--text)}
+    .small{font-size:12px;color:var(--muted)}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;border:1px solid var(--border)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <a class="brand" href="#top" aria-label="Detective Pepper home">
+        <div class="logo">🐾</div>
+        <div>
+          <h1>Detective Pepper <span>Cosy logic-grid mysteries</span></h1>
+        </div>
+      </a>
+
+      <nav>
+        <a class="pill" href="#features">Features</a>
+        <a class="pill" href="#screens">Screens</a>
+        <a class="pill" href="#chapter1">Chapter 1</a>
+        <a class="pill cta" href="#contact">Contact</a>
       </nav>
     </header>
 
-    <section class="hero">
-      <div class="card">
-        <h1 class="h1">Detective Pepper</h1>
-        <p class="sub">
-          A cosy detective game of bite-sized mysteries. Use clues to fill a logic grid,
-          then make your final accusation.
+    <main id="top" class="hero">
+      <div class="card left">
+        <div class="kicker">🕵️‍♀️ <b>New</b> cosy puzzles starring a tiny tuxedo detective</div>
+        <h2 class="title">Solve bite-sized mysteries with Detective Pepper.</h2>
+        <p class="subtitle">
+          Tick off clues, eliminate possibilities, then make your final accusation.
+          Lighthearted, charming, and perfect for a quick brain-teaser.
         </p>
 
-        <div class="pills">
-          <span class="pill">Chapter 1: The Young Detective</span>
-          <span class="pill">Logic grid puzzles</span>
-          <span class="pill">Cosy mystery</span>
-          <span class="pill">Pixel art</span>
+        <div class="btnrow">
+          <a class="btn primary" href="#screens">See screenshots</a>
+          <a class="btn" href="#chapter1">What’s in Chapter 1?</a>
         </div>
-
-        <div class="buttons">
-          <a class="btn primary" href="#contact">Join testing list</a>
-          <a class="btn" href="#privacy">Privacy policy</a>
-        </div>
+        <p class="hint">
+          Coming soon to iOS. Built in SwiftUI. Designed to be fun, readable, and satisfying.
+        </p>
       </div>
 
-      <div class="card">
-        <h2 style="margin:0 0 8px;">Screenshots / art</h2>
-        <p class="small" style="margin:0 0 12px;">
-          Add your four Pepper images into <code>/assets</code> and they’ll show below.
-        </p>
+      <div class="card right">
+        <!-- Replace the src with your real image path -->
+        <div class="shot">
+          <!-- If you don’t have an image yet, leave this commented and keep the placeholder text -->
+          <!-- <img src="images/detective-pepper-screenshot-1.png" alt="Detective Pepper gameplay screenshot"> -->
+          <div>Drop your screenshot in <code>/images</code> and update the <code>src</code>!</div>
+          <div class="label">Gameplay screenshot</div>
+        </div>
 
-        <div class="gallery">
-          <img src="../assets/DP_pictures_12.png" alt="Detective Pepper pixel art 1" />
-          <img src="../assets/DP_pictures_5.png" alt="Detective Pepper pixel art 2" />
-          <img src="../assets/DP_pictures_7.png" alt="Detective Pepper pixel art 3" />
-          <img src="../assets/DP_pictures_9.png" alt="Detective Pepper pixel art 4" />
+        <div class="shot" style="aspect-ratio: 16/6;">
+          <!-- Optional: add a second wide banner image -->
+          <!-- <img src="images/detective-pepper-banner.png" alt="Detective Pepper banner"> -->
+          <div>Optional banner image</div>
+          <div class="label">Cosy & cute</div>
+        </div>
+      </div>
+    </main>
+
+    <section id="features">
+      <h3 class="sectionTitle">Why it’s fun</h3>
+      <p class="sectionText">Cosy vibes, tidy logic, and small mysteries that feel good to complete.</p>
+
+      <div class="grid">
+        <div class="card feature">
+          <div class="icon">✅</div>
+          <h3>Classic logic-grid gameplay</h3>
+          <p>Tick and cross your way to the answer with clear, simple rules.</p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🧩</div>
+          <h3>Short, satisfying cases</h3>
+          <p>Perfect for a quick session — each puzzle is a neat little story.</p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🐾</div>
+          <h3>Detective Pepper charm</h3>
+          <p>A tuxedo cat detective with just the right mix of cute and serious.</p>
         </div>
       </div>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <h3 style="margin:0 0 6px;">How it plays</h3>
-        <ul class="small" style="margin:10px 0 0; padding-left:18px; line-height:1.6;">
-          <li>Read the clues.</li>
-          <li>Tick/cross combinations in the logic grid.</li>
-          <li>Submit, then choose your final accusation.</li>
-        </ul>
-      </div>
+    <section id="screens">
+      <h3 class="sectionTitle">Screenshots</h3>
+      <p class="sectionText">
+        Add your images to <code>/images</code> and update the filenames below.
+        (GitHub is case-sensitive!)
+      </p>
 
-      <div class="card" id="privacy">
-        <h3 style="margin:0 0 6px;">Privacy</h3>
-        <p class="small" style="margin:10px 0 0; line-height:1.6;">
-          <strong>Placeholder:</strong> Detective Pepper does not collect personal data.
-          (We’ll replace this with the final App Store privacy wording before launch.)
-        </p>
-      </div>
+      <div class="twoCol">
+        <div class="card" style="padding:14px">
+          <div class="shot">
+            <!-- <img src="images/screen-main-menu.png" alt="Main menu screen"> -->
+            <div>Main Menu screenshot placeholder</div>
+            <div class="label">Main Menu</div>
+          </div>
+        </div>
 
-      <div class="card" id="contact">
-        <h3 style="margin:0 0 6px;">Contact</h3>
-        <p class="small" style="margin:10px 0 12px; line-height:1.6;">
-          Want to test the game or report a bug?
-        </p>
-
-        <!-- Replace the email address once you’ve set it up -->
-        <a class="btn" href="mailto:hello@jedgames.co.uk">Email: hello@jedgames.co.uk</a>
-
-        <p class="small" style="margin:12px 0 0;">
-          If you don’t have email set up yet, you can temporarily use your Gmail address.
-        </p>
+        <div class="card" style="padding:14px">
+          <div class="shot">
+            <!-- <img src="images/screen-puzzle.png" alt="Puzzle screen showing the logic grid and tabs"> -->
+            <div>Puzzle screen placeholder</div>
+            <div class="label">Logic Grid</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div>© <span id="year"></span> JED Games</div>
-      <div class="small"><a href="../">Back to Home</a></div>
+    <section id="chapter1">
+      <h3 class="sectionTitle">Chapter 1 — The Young Detective</h3>
+      <p class="sectionText">
+        Detective Pepper starts at home with cosy household mysteries: missing items, playful chaos, and suspicious snacks.
+      </p>
+
+      <div class="twoCol">
+        <div class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">What you’ll do</h3>
+          <ul class="list">
+            <li>Read clues and eliminate possibilities</li>
+            <li>Fill the logic grid with ticks and crosses</li>
+            <li>Submit your solution, then pick the final accusation</li>
+            <li>Unlock the next case and continue the story</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">Cosy content note</h3>
+          <p class="sectionText" style="margin:0">
+            The tone is playful and light. Some mysteries use classic “whodunnit” language,
+            but the vibe is cosy and cartoonish rather than graphic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3 class="sectionTitle">Contact</h3>
+      <p class="sectionText">
+        Want to beta test, report a bug, or suggest a puzzle idea?
+      </p>
+
+      <div class="card" style="padding:18px">
+        <p style="margin:0 0 8px"><b>Email:</b> <span class="small">add your address here</span></p>
+        <p style="margin:0"><b>Press / screenshots:</b> <span class="small">add a link or folder here</span></p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Detective Pepper</div>
+      <div class="links">
+        <!-- Create these pages later if you want -->
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </footer>
   </div>
 
