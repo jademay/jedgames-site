@@ -188,7 +188,45 @@
       border-radius: 16px;
       display: block;
     }
-    
+    /* Swipe carousel (if not already set) */
+.shots{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom: 10px;
+}
+.shots::-webkit-scrollbar{ display:none; }
+
+.shotWrap{
+  flex: 0 0 100%;
+  scroll-snap-align:center;
+}
+
+/* Dots */
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  border:none;
+  background: rgba(255,255,255,.25);
+  cursor:pointer;
+  padding:0;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.dot.active{
+  background: var(--accent);
+  transform: scale(1.25);
+}
     .grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
       margin:18px 0 10px;
@@ -315,7 +353,7 @@
       </div>
     </section>
 
-    <section id="screens">
+<section id="screens">
   <h3 class="sectionTitle">Screenshots</h3>
   <p class="sectionText">Swipe to view more →</p>
 
@@ -342,7 +380,7 @@
           <div class="label">Suspects</div>
         </div>
       </div>
-      
+
       <div class="shotWrap">
         <div class="shot phone">
           <img src="../assets/SH_puzzle_1_locations.jpeg" alt="Puzzle screen showing the logic grid and locations tab">
@@ -356,7 +394,7 @@
           <div class="label">Items</div>
         </div>
       </div>
-      
+
       <div class="shotWrap">
         <div class="shot phone">
           <img src="../assets/SH_puzzle_3.jpeg" alt="Puzzle screen showing logic grid gameplay">
@@ -373,8 +411,21 @@
 
       <!-- Add more shotWrap blocks as you add screenshots -->
     </div>
+
+    <!-- ✅ Dots -->
+    <div class="dots" aria-label="Screenshot navigation">
+      <button class="dot active" type="button" aria-label="Screenshot 1"></button>
+      <button class="dot" type="button" aria-label="Screenshot 2"></button>
+      <button class="dot" type="button" aria-label="Screenshot 3"></button>
+      <button class="dot" type="button" aria-label="Screenshot 4"></button>
+      <button class="dot" type="button" aria-label="Screenshot 5"></button>
+      <button class="dot" type="button" aria-label="Screenshot 6"></button>
+      <button class="dot" type="button" aria-label="Screenshot 7"></button>
+    </div>
   </div>
 </section>
+
+    
     <section id="chapter1">
       <h3 class="sectionTitle">Chapter 1 — The Young Detective</h3>
       <p class="sectionText">
@@ -426,6 +477,34 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script>
+    const shots = document.querySelector('.shots');
+    const wraps = Array.from(document.querySelectorAll('.shotWrap'));
+    const dots  = Array.from(document.querySelectorAll('.dot'));
+
+    function setActiveDot(index){
+      dots.forEach((d,i) => d.classList.toggle('active', i === index));
+    }
+
+    function currentIndex(){
+      const containerLeft = shots.scrollLeft;
+      const width = shots.clientWidth;
+      return Math.round(containerLeft / width);
+    }
+
+    // Update dots while scrolling
+    shots.addEventListener('scroll', () => {
+      setActiveDot(currentIndex());
+    });
+
+    // Click dots to jump
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        wraps[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+        setActiveDot(i);
+      });
+    });
   </script>
 </body>
 </html>
