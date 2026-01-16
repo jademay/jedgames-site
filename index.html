@@ -7,31 +7,37 @@
   <meta name="description" content="JED Games — cosy mysteries, pixel-art vibes, and logic puzzles." />
   <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
   <div class="container">
     <header class="nav">
       <div class="brand">
         <div class="brand-badge">JG</div>
-        <div>JED Games</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:.2px;">JED Games</div>
+          <div class="small" style="opacity:.9;">Cosy puzzles & pixel mischief</div>
+        </div>
       </div>
 
       <nav class="nav-links">
         <a class="active" href="./">Home</a>
         <a href="./detective-pepper/">Detective Pepper</a>
+        <a href="./tuxedo-grid/">Tuxedo Grid</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="card">
         <h1 class="h1">Small games.<br/>Big cosy vibes.</h1>
+
         <p class="sub">
           Welcome to <strong>JED Games</strong> — bite-sized mystery games with pixel art,
-          logic-grid puzzles, and a certain black-and-white detective cat.
+          logic puzzles, and the occasional chaotic tuxedo cat.
         </p>
 
         <div class="buttons">
-          <a class="btn primary" href="./detective-pepper/">Explore Detective Pepper</a>
-          <a class="btn" href="./detective-pepper/#contact">Contact</a>
+          <a class="btn primary" href="#games">Explore games</a>
+          <a class="btn" href="mailto:detectivepeppergame@gmail.com">Email</a>
         </div>
 
         <div class="pills">
@@ -45,36 +51,46 @@
       <div class="card">
         <h2 style="margin:0 0 8px;">Now building</h2>
         <p class="small" style="margin:0 0 12px;">
-          Detective Pepper — a cosy detective game where you solve tiny mysteries
-          using clues and a logic grid.
+          <strong>Detective Pepper</strong> — solve tiny mysteries using clues and a logic grid.
+          Chapters unlock over time, with Chapter 1 free.
         </p>
+
         <div class="note">
-          Want to be a tester? Drop me a message and I’ll add you to TestFlight when it’s ready.
+          Want to beta test? Email me and I’ll add you to TestFlight when it’s ready.
+          <div class="small" style="margin-top:8px; opacity:.9;">
+            detectivepeppergame@gmail.com
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="grid">
+    <section id="games" class="grid">
       <div class="card">
         <h3 style="margin:0 0 6px;">Detective Pepper</h3>
         <p class="small" style="margin:0 0 12px;">
           Short cases. Cute suspects. Real deduction.
         </p>
-        <a class="btn" href="./detective-pepper/">View game page</a>
+        <div class="buttons">
+          <a class="btn primary" href="./detective-pepper/">View game page</a>
+          <a class="btn" href="./detective-pepper/press.html">Press kit</a>
+        </div>
       </div>
 
       <div class="card">
-        <h3 style="margin:0 0 6px;">Press / screenshots</h3>
+        <h3 style="margin:0 0 6px;">Tuxedo Grid</h3>
         <p class="small" style="margin:0 0 12px;">
-          I’ll add a proper press kit once the App Store listing is live.
+          A cosy 2048-style puzzler with cat tiles (and the occasional blocking yarn ball).
         </p>
-        <span class="small">Coming soon</span>
+        <div class="buttons">
+          <a class="btn primary" href="./tuxedo-grid/">View game page</a>
+          <a class="btn" href="./tuxedo-grid/#screens">Screenshots</a>
+        </div>
       </div>
 
       <div class="card">
         <h3 style="margin:0 0 6px;">Updates</h3>
         <p class="small" style="margin:0 0 12px;">
-          I’ll post launch updates and new chapter news here.
+          Launch notes, new chapters, and behind-the-scenes dev bits.
         </p>
         <span class="small">Coming soon</span>
       </div>
@@ -83,8 +99,8 @@
     <footer class="footer">
       <div>© <span id="year"></span> JED Games</div>
       <div class="small">
-        <a href="./detective-pepper/#privacy">Privacy</a> ·
-        <a href="./detective-pepper/#contact">Contact</a>
+        <a href="./detective-pepper/privacy.html">Privacy</a> ·
+        <a href="./detective-pepper/contact.html">Contact</a>
       </div>
     </footer>
   </div>
