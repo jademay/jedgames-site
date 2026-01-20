@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>JED Games</title>
-  <meta name="description" content="JED Games — cosy mysteries, pixel-art vibes, and logic puzzles." />
+  <title>Jed May Studio</title>
+  <meta name="description" content="Jed May Studio — small indie games, built with care. Daily challenges, cosy puzzles, and pixel-art play." />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -12,59 +12,71 @@
   <div class="container">
     <header class="nav">
       <div class="brand">
-        <div class="brand-badge">JG</div>
+        <div class="brand-badge">JM</div>
         <div>
-          <div style="font-weight:800; letter-spacing:.2px;">JED Games</div>
-          <div class="small" style="opacity:.9;">Cosy puzzles & pixel mischief</div>
+          <div style="font-weight:800; letter-spacing:.2px;">Jed May Studio</div>
+          <div class="small" style="opacity:.9;">Small indie games, built with care</div>
         </div>
       </div>
 
       <nav class="nav-links">
         <a class="active" href="./">Home</a>
+        <a href="./three-tries/">Three Tries</a>
         <a href="./detective-pepper/">Detective Pepper</a>
         <a href="./tuxedo-grid/">Tuxedo Grid</a>
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
       <div class="card">
-        <h1 class="h1">Small games.<br/>Big cosy vibes.</h1>
+        <h1 class="h1">Small games.<br/>Built with care.</h1>
 
         <p class="sub">
-          Welcome to <strong>JED Games</strong> — bite-sized mystery games with pixel art,
-          logic puzzles, and the occasional chaotic tuxedo cat.
+          <strong>Jed May Studio</strong> makes bite-sized games designed for quick, satisfying moments —
+          daily challenges, cosy puzzles, and pixel-art play.
         </p>
 
         <div class="buttons">
-          <a class="btn primary" href="#games">Explore games</a>
-          <a class="btn" href="mailto:detectivepeppergame@gmail.com">Email</a>
-        </div>
-
-        <div class="pills">
-          <span class="pill">iOS</span>
-          <span class="pill">Logic puzzles</span>
-          <span class="pill">Cosy mystery</span>
-          <span class="pill">Pixel art</span>
+          <a class="btn primary" href="#games">View games</a>
+          <a class="btn" href="mailto:hello@jedmaystudio.com">Contact</a>
         </div>
       </div>
 
+      <!-- FEATURED GAME -->
       <div class="card">
-        <h2 style="margin:0 0 8px;">Now building</h2>
+        <h2 style="margin:0 0 8px;">Featured</h2>
         <p class="small" style="margin:0 0 12px;">
-          <strong>Detective Pepper</strong> — solve tiny mysteries using clues and a logic grid.
-          Chapters unlock over time, with Chapter 1 free.
+          <strong>Three Tries</strong> — a new challenge every day. You get three tries to set your best score
+          and climb the global leaderboard.
         </p>
 
-        <div class="note">
-          Want to beta test? Email me and I’ll add you to TestFlight when it’s ready.
-          <div class="small" style="margin-top:8px; opacity:.9;">
-            detectivepeppergame@gmail.com
-          </div>
+        <div class="buttons">
+          <a class="btn primary" href="./three-tries/">View game page</a>
+          <a class="btn" href="#footer">Get updates</a>
+        </div>
+
+        <div class="pills" style="margin-top:14px;">
+          <span class="pill">Daily challenge</span>
+          <span class="pill">Skill-based</span>
+          <span class="pill">Three tries</span>
+          <span class="pill">iOS</span>
         </div>
       </div>
     </section>
 
+    <!-- OTHER PROJECTS -->
     <section id="games" class="grid">
+      <div class="card">
+        <h3 style="margin:0 0 6px;">Three Tries</h3>
+        <p class="small" style="margin:0 0 12px;">
+          Three games. Three tries. One global score.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="./three-tries/">View game page</a>
+        </div>
+      </div>
+
       <div class="card">
         <h3 style="margin:0 0 6px;">Detective Pepper</h3>
         <p class="small" style="margin:0 0 12px;">
@@ -79,28 +91,37 @@
       <div class="card">
         <h3 style="margin:0 0 6px;">Tuxedo Grid</h3>
         <p class="small" style="margin:0 0 12px;">
-          A cosy 2048-style puzzler with cat tiles (and the occasional blocking yarn ball).
+          A cosy 2048-style puzzler with evolving cat tiles (and the occasional blocking yarn ball).
         </p>
         <div class="buttons">
           <a class="btn primary" href="./tuxedo-grid/">View game page</a>
           <a class="btn" href="./tuxedo-grid/#screens">Screenshots</a>
         </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3 style="margin:0 0 6px;">Updates</h3>
-        <p class="small" style="margin:0 0 12px;">
-          Launch notes, new chapters, and behind-the-scenes dev bits.
+    <!-- ABOUT -->
+    <section class="hero" style="margin-top:18px;">
+      <div class="card" style="grid-column: 1 / -1;">
+        <h2 style="margin:0 0 8px;">About the studio</h2>
+        <p class="sub" style="margin:0;">
+          Jed May Studio is an indie studio making small, focused games with strong “just one more go” energy.
+          I’m building in public — sharing progress, playtests, and launches as they happen.
         </p>
-        <span class="small">Coming soon</span>
+
+        <div class="buttons" style="margin-top:14px;">
+          <a class="btn" href="mailto:hello@jedmaystudio.com">Email</a>
+          <a class="btn" href="https://github.com/jademay">GitHub</a>
+          <a class="btn" href="https://instagram.com/jedmaystudio">Instagram</a>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div>© <span id="year"></span> JED Games</div>
+    <footer id="footer" class="footer">
+      <div>© <span id="year"></span> Jed May Studio</div>
       <div class="small">
-        <a href="./detective-pepper/privacy.html">Privacy</a> ·
-        <a href="./detective-pepper/contact.html">Contact</a>
+        <a href="./privacy.html">Privacy</a> ·
+        <a href="mailto:hello@jedmaystudio.com">Contact</a>
       </div>
     </footer>
   </div>
