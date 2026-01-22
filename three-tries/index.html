@@ -78,6 +78,31 @@
       background: var(--orange);
       transform: scale(1.3);
     }
+
+    /* App icon in hero */
+    .hero-app-icon{
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      border: 3px solid var(--text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-icon-link:hover .hero-app-icon{
+      transform: rotate(-3deg) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 600px){
+      .hero-app-icon{
+        width: 60px;
+        height: 60px;
+        top: 16px;
+        right: 16px;
+      }
+    }
   </style>
 </head>
 
@@ -108,7 +133,10 @@
 
     <!-- HERO -->
     <section class="hero-min">
-      <div class="card" style="border: 3px solid var(--text);">
+      <div class="card" style="border: 3px solid var(--text); position: relative;">
+        <a href="#" class="app-icon-link" title="Coming soon to the App Store">
+          <img src="assets/3T_app_icon.png" alt="Three Tries app icon" class="hero-app-icon">
+        </a>
         <h1 class="h1">A new challenge every day.<br/><span class="highlight">Just three tries.</span></h1>
 
         <p class="sub">
